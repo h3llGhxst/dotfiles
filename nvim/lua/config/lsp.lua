@@ -26,4 +26,8 @@ vim.lsp.config("pylsp", {
   },
 })
 
-vim.lsp.enable({ "pylsp", "gopls", "lua_ls", "clangd", "rust_analyzer" })
+vim.lsp.config("asm_lsp", {
+  filetypes = { "asm", "s", "S" },
+})
+
+vim.lsp.enable({ "pylsp", "gopls", "lua_ls", "clangd", "rust_analyzer", "asm_lsp" })

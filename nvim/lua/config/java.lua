@@ -12,9 +12,11 @@ end
 
 -- Use Git, Maven, Gradle, or root of current folder as project root
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+-- Fall back to the file's own directory for loose single-file projects
 local root_dir = require("jdtls.setup").find_root(root_markers)
+  or vim.fn.expand("%:p:h")
 
-if not root_dir then
+if root_dir == "" then
   vim.notify("JDTLS root directory not found", vim.log.levels.ERROR)
   return
 end
@@ -41,6 +43,7 @@ local config = {
     "-data", workspace_dir,
   },
   root_dir = root_dir,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
 jdtls.start_or_attach(config)

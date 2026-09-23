@@ -14,13 +14,44 @@
     "cpu",
     "memory",
     "custom/docker",
+    "custom/dunst",
     "tray",
     "custom/lock",
     "custom/power"
   ],
 
+  "custom/dunst": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 2,
+    "exec": "$HOME/.config/waybar/scripts/dunst-status",
+    "on-click": "dunstctl set-paused toggle",
+    "on-click-right": "dunstctl history-pop",
+    "on-click-middle": "dunstctl close-all"
+  },
+
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
+    "format": "{name} {icon} {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "class<kitty>": "",
+      "class<Alacritty>": "",
+      "class<foot>": "",
+      "class<[Bb]rave.*>": "",
+      "class<firefox>": "",
+      "class<[Cc]hrom(e|ium).*>": "",
+      "class<[Ss]potify>": "",
+      "class<[Cc]ode>": "",
+      "title<.*nvim.*>": "",
+      "title<.*vim.*>": "",
+      "class<discord>": "",
+      "class<[Vv]esktop>": "",
+      "class<org.pwmt.zathura>": "",
+      "class<[Tt]hunar>": "",
+      "class<nautilus>": "",
+      "class<mpv>": ""
+    },
     "format-icons": {
       "active": "",
       "default": ""
@@ -80,7 +111,24 @@
     "format-icons": {
       "default": ["", "", " "]
     },
-    "on-click": "pavucontrol"
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "custom/lock": {
+    "tooltip": false,
+    "on-click": "hyprlock",
+    "format": ""
   },
 
   "custom/power": {
@@ -106,8 +154,6 @@
   },
 
   "battery": {
-    "bat": "BAT0,BAT1",
-    "adapter": "AC",
     "interval": 5,
     "states": {
       "warning": 30,

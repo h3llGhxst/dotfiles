@@ -5,7 +5,7 @@
    ======================================== */
 
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "FiraCode Nerd Font", monospace;
   font-size: 11px;
   min-height: 0;
   border: none;
@@ -63,12 +63,21 @@
 #custom-power,
 #custom-weather,
 #custom-uptime,
+#custom-dunst,
 #custom-docker {
   background: #101010;
   color: #c6d0f5;
   padding: 3px 12px;
   margin: 4px 0;
   transition: all 200ms ease;
+}
+
+#custom-dunst.pending {
+  color: #e78284;
+}
+
+#custom-dunst.dnd {
+  color: #626880;
 }
 
 /* ── CLOCK ── */

@@ -1,3 +1,4 @@
+
 -- Bootstrap Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -17,6 +18,23 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     config = function()
+      require("tokyonight").setup({
+        style = "night",
+        styles = {
+          functions = { italic = true },
+          keywords = { italic = false },
+        },
+        on_highlights = function(hl, c)
+          hl["@variable"]           = { fg = c.fg }
+          hl["@variable.member"]    = { fg = c.cyan }
+          hl["@variable.parameter"] = { fg = c.orange }
+          hl["@type"]               = { fg = c.yellow }
+          hl["@type.builtin"]       = { fg = c.yellow, italic = true }
+          hl["@function.builtin"]   = { fg = c.cyan, italic = true }
+          hl["@constant"]           = { fg = c.orange }
+          hl["@constant.builtin"]   = { fg = c.orange, bold = true }
+        end,
+      })
       vim.cmd("colorscheme tokyonight-night")
     end,
   },
@@ -83,7 +101,7 @@ require("lazy").setup({
           clear_suggestion = "<C-]>",
           accept_word = "<C-j>",
         },
-        disable_inline_completion = true,
+        disable_inline_completion = false,
         disable_keymaps = false,
       })
       vim.keymap.set("n", "<leader>sm", "<cmd>SupermavenToggle<CR>", { desc = "Toggle Supermaven" })

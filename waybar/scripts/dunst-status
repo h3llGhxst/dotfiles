@@ -1,0 +1,22 @@
+#!/bin/bash
+# Waybar custom module: dunst notification status
+# stdout: JSON { text, tooltip, class }
+
+count=$(dunstctl count waiting 2>/dev/null || echo 0)
+paused=$(dunstctl is-paused 2>/dev/null)
+
+if [ "$paused" = "true" ]; then
+    icon=""          # bell-off  (DND on)
+    cls="dnd"
+    tip="Do Not Disturb — $count waiting"
+elif [ "$count" -gt 0 ]; then
+    icon=" $count"   # bell with count
+    cls="pending"
+    tip="$count notification(s) waiting"
+else
+    icon=""          # idle bell
+    cls="idle"
+    tip="No new notifications"
+fi
+
+printf '{"text":"%s","tooltip":"%s","class":"%s"}\n' "$icon" "$tip" "$cls"

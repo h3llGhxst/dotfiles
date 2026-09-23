@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function()
     vim.cmd("TSBufEnable highlight")
+    -- Clear the module cache so jdtls.start_or_attach runs for every java buffer,
+    -- not just the first one
+    package.loaded["config.java"] = nil
     require("config.java")
   end,
 })
