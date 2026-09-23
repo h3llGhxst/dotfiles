@@ -2,8 +2,6 @@
 
 export NRDP="$HOME/work/nrdp"
 export NRDP_BUILDS="$HOME/work/builds"
-export CC="clang-12"
-export CXX="clang++-12"
 export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH="$HOME/go"
 export DARWINS_DIR="$HOME/work/darwins"
