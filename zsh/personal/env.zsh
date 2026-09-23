@@ -17,3 +17,9 @@ export N_PREFIX="$HOME/.local/n"
 export DOTFILES="$HOME/.dotfiles"
 export BOGART="$HOME/work/bogart"
 
+
+# Regional formats (metric, °C, ZAR, DD/MM/YYYY, 24h).
+# LANG stays en_US so message translations remain complete.
+export LC_MEASUREMENT="en_ZA.UTF-8"
+export LC_TIME="en_ZA.UTF-8"
+export LC_MONETARY="en_ZA.UTF-8"
