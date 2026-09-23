@@ -2,5 +2,8 @@
   "bar": {
     "persistent": false,
     "excludedScreens": ["eDP-1"]
+  },
+  "dashboard": {
+    "showOnHover": false
   }
 }
