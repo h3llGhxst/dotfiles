@@ -5,5 +5,10 @@
   },
   "dashboard": {
     "showOnHover": false
+  },
+  "general": {
+    "idle": {
+      "enabled": false
+    }
   }
 }
